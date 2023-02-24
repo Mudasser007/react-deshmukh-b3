@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XMLHttpRequest Example</title>
+    <style>
+      .flex-container {
+        display: flex;
+        background-color: darkcyan;
+      }
+      .flex-container > div {
+        background-color: aqua;
+        margin: 20px;
+        padding: 20px;
+        font-size: 50px;
+      }
+    </style>
+  </head>
+   <body>
+    <h1>API XMLHttpRequest Continer</h1>
+    <div class="flex-container"></div>
+    <img id="avatar" src="" alt="Image url" />
+    <img id="avatar1" src="" alt="Image url" />
+    <p id="demo"></p>
+    <p id="demo1"></p>
+
+    <script>
+      //   let request = new XMLHttpRequest();
+      //   request.open("GET", "https://api.github.com/users/Mudasser007");
+      //   request.send();
+      //   request.onload = () => {
+      //     console.log(request);
+      //     if (request.status === 200) {
+      //       const jsonData = JSON.parse(request.response);
+      //       document.getElementById(
+      //         "demo"
+      //       ).innerHTML = `User name from Server is ${jsonData.name}`;
+      //       document.getElementById("avatar").src = jsonData.avatar - url;
+      //     } else {
+      //       document.getElementById(
+      //         "demo"
+      //       ).innerHTML = `Error occured with status ${request.status}::${request.statusText}`;
+      //     }
+      //   };
+      fetch("https://api.github.com/users/Mudasser007").then((data) => {
+        console.log("response data", data);
+        if (data.status === 200) {
+          data.json().then((jsonData) => {
+            console.log(jsonData);
+            document.getElementById("demo").innerHTML = jsonData.name;
+            document.getElementById("avatar").src = jsonData.avatar_url;
+          });
+        } else {
+          document.getElementById(
+            "demo"
+          ).innerHTML = `Error Occured with status ${request.status} :: ${request.statusText}`;
+        }
+      });
+      fetch("https://api.github.com/users/abdulazhar-cr").then((data) => {
+        console.log("response data", data);
+        if (data.status === 200) {
+          data.json().then((jsonData) => {
+            console.log(jsonData);
+            document.getElementById("demo1").innerHTML = jsonData.name;
+
+            document.getElementById("avatar1").src = jsonData.avatar_url;
+          });
+        } else {
+          document.getElementById(
+            "demo"
+          ).innerHTML = `Error Occured with status ${request.status} :: ${request.statusText}`;
+        }
+      });
+    </script>
+  </body>
+</html>

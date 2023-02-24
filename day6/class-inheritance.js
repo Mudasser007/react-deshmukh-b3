@@ -1,5 +1,5 @@
 class Person {
-  consstructor(name,level) {
+  constructor(name) {
     this.name = name;
   }
   greet() {
@@ -7,20 +7,21 @@ class Person {
   }
 }
 
-class student extends Person {
+class Student extends Person {
   constructor(name, level) {
     super(name);
     this.level = level;
   }
   greet() {
-    console.log(`Hello ${this.name}from ${this.level}`);
+    console.log(`Hello ${this.name} from ${this.level}`);
   }
 }
-const o1 = new Person("Azhar");
-const o2 = new student("Mudasser", "BCA Final Year");
-const o3 = new student("XYZ", "Grade 10");
+const o1 = new Person("Mudasser");
+const o2 = new Student("Azhar", "BCA Final Year");
+const o3 = new Student("XYZ", "Grade 10");
+o3.greet = () => {
+  console.log("This is special student");
+};
 o1.greet();
 o2.greet();
-o3.greet = () => {
-  console.log("This is Special student");
-};
+o3.greet();
